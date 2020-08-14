@@ -58,7 +58,17 @@ export default class WelcomeScreen extends Component{
      });
    }
  }
-
+ userLogin = (emailId, password)=>{
+  firebase.auth().signInWithEmailAndPassword(emailId, password)
+  .then(()=>{
+    return Alert.alert("Successfully Login")
+  })
+  .catch((error)=> {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    return Alert.alert(errorMessage)
+  })
+}
 
 
 showModal = ()=>{
